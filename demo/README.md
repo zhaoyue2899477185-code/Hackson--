@@ -18,7 +18,7 @@ There are no npm packages, remote images, APIs, or other network dependencies.
 
 ## Windows
 
-1. Extract the ZIP file.
+1. Download the whole demo file
 2. Double-click `start-windows.bat`.
 3. Open `http://127.0.0.1:4173` if the browser does not open automatically.
 
