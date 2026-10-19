@@ -1,0 +1,204 @@
+{
+  "title": "Dataset - Parameter-Value Reference Table",
+  "source_file": "docs/final/dataset-inventory.en.md",
+  "notes": [
+    "This table gives every calibrated parameter of the final model with its value and unit; sources and evidence levels are in data-source-mapping.md.",
+    "Monetary unit: HKD, FX 7.8 HKD/USD."
+  ],
+  "currency": "HKD",
+  "fx_hkd_per_usd": 7.8,
+  "global_scalar_parameters": [
+    {
+      "parameter": "FX",
+      "meaning": "Demo FX",
+      "value": 7.8,
+      "unit": "HKD/USD",
+      "evidence_level": "Official-derived"
+    },
+    {
+      "parameter": "sigma",
+      "meaning": "60-day log-volatility",
+      "value": 0.10,
+      "range": [0.08, 0.13],
+      "unit": "dimensionless",
+      "evidence_level": "Authoritative third-party + Assumption"
+    },
+    {
+      "parameter": "mu",
+      "meaning": "Log drift (reference = current)",
+      "value": 0,
+      "range_note": "sensitivity +/-3%, +/-6%",
+      "unit": "dimensionless",
+      "evidence_level": "Assumption"
+    },
+    {
+      "parameter": "q",
+      "meaning": "Change probability",
+      "value": 0.05,
+      "range": [0.03, 0.10],
+      "unit": "probability",
+      "evidence_level": "Peer-reviewed"
+    },
+    {
+      "parameter": "rho_face",
+      "meaning": "Passenger value per mile",
+      "value": 0.0936,
+      "value_usd_cents": 1.2,
+      "unit": "HKD/mile",
+      "evidence_level": "Authoritative third-party"
+    },
+    {
+      "parameter": "c_m",
+      "meaning": "Carrier cost per mile",
+      "value": 0.0538,
+      "value_usd_cents": 0.69,
+      "unit": "HKD/mile",
+      "evidence_level": "Official-derived"
+    },
+    {
+      "parameter": "c_0",
+      "meaning": "Fixed per-benefit operating cost",
+      "value": 2,
+      "unit": "HKD",
+      "evidence_level": "Assumption"
+    },
+    {
+      "parameter": "c_1",
+      "meaning": "Per-change processing cost",
+      "value": 20,
+      "unit": "HKD",
+      "evidence_level": "Assumption"
+    },
+    {
+      "parameter": "lambda",
+      "meaning": "Inventory-opportunity cost",
+      "value": 15,
+      "unit": "HKD/change",
+      "evidence_level": "Assumption"
+    },
+    {
+      "parameter": "Phi",
+      "meaning": "Risk buffer",
+      "value": 0.30,
+      "unit": "ratio",
+      "evidence_level": "Assumption"
+    },
+    {
+      "parameter": "margin",
+      "meaning": "Profit margin",
+      "value": 0.20,
+      "unit": "ratio",
+      "evidence_level": "Assumption"
+    },
+    {
+      "parameter": "alpha",
+      "meaning": "Rebate fraction (cash-equivalent)",
+      "value": 0.50,
+      "range": [0.30, 1.00],
+      "unit": "dimensionless",
+      "evidence_level": "Design"
+    },
+    {
+      "parameter": "M_max",
+      "meaning": "Miles cap per change",
+      "value": 20000,
+      "unit": "miles",
+      "evidence_level": "Design"
+    },
+    {
+      "parameter": "FRAG",
+      "meaning": "Fragmentation perceived-value discount",
+      "value": 0.50,
+      "unit": "ratio",
+      "evidence_level": "Assumption"
+    },
+    {
+      "parameter": "M_min",
+      "meaning": "Minimum effective usage threshold",
+      "value": [5000, 7000],
+      "unit": "miles",
+      "evidence_level": "Official"
+    },
+    {
+      "parameter": "mileage_liability_2024",
+      "meaning": "2024 deferral / recognition / opening",
+      "value": {
+        "deferral_HKM": 3928,
+        "recognition_HKM": 2999,
+        "opening_HKM": 657
+      },
+      "unit": "HK$M",
+      "evidence_level": "Official"
+    }
+  ],
+  "route_fare_anchors": [
+    {
+      "route": "Hong Kong-Tokyo",
+      "f0_hkd": 3640,
+      "evidence_level": "Official snapshot"
+    },
+    {
+      "route": "Hong Kong-Seoul",
+      "f0_hkd": 2724,
+      "evidence_level": "Official snapshot"
+    },
+    {
+      "route": "Hong Kong-Beijing",
+      "f0_hkd": 3609,
+      "evidence_level": "Official snapshot"
+    },
+    {
+      "route": "Hong Kong-Shanghai",
+      "f0_hkd": 2889,
+      "evidence_level": "Official snapshot"
+    }
+  ],
+  "fare_family_change_fees": [
+    {
+      "fare_family": "Light",
+      "g_j_hkd": 390,
+      "note": "US$50 equivalent",
+      "evidence_level": "Structure Official, amount Assumption"
+    },
+    {
+      "fare_family": "Essential",
+      "g_j_hkd": 240,
+      "note": null,
+      "evidence_level": "Assumption"
+    },
+    {
+      "fare_family": "Flex",
+      "g_j_hkd": 0,
+      "note": null,
+      "evidence_level": "Official"
+    }
+  ],
+  "derived_statistics": [
+    {
+      "quantity": "S+/F0",
+      "value": 0.0425,
+      "unit": "ratio",
+      "note": "Expected positive difference over fare at sigma=0.10, mu=0"
+    },
+    {
+      "quantity": "c_m/rho_face",
+      "value": 0.575,
+      "unit": "ratio",
+      "note": "Mileage cost-to-face-value ratio"
+    }
+  ],
+  "final_outputs": [
+    { "route": "Tokyo", "family": "Light", "s_plus_hkd": 154.8, "miles_per_change": 827, "fee_k_hkd": 39.7 },
+    { "route": "Tokyo", "family": "Essential", "s_plus_hkd": 154.8, "miles_per_change": 827, "fee_k_hkd": 28.0 },
+    { "route": "Tokyo", "family": "Flex", "s_plus_hkd": 154.8, "miles_per_change": 827, "fee_k_hkd": 9.3 },
+    { "route": "Seoul", "family": "Light", "s_plus_hkd": 115.9, "miles_per_change": 619, "fee_k_hkd": 38.9 },
+    { "route": "Seoul", "family": "Essential", "s_plus_hkd": 115.9, "miles_per_change": 619, "fee_k_hkd": 27.2 },
+    { "route": "Seoul", "family": "Flex", "s_plus_hkd": 115.9, "miles_per_change": 619, "fee_k_hkd": 8.5 },
+    { "route": "Beijing", "family": "Light", "s_plus_hkd": 153.5, "miles_per_change": 820, "fee_k_hkd": 39.7 },
+    { "route": "Beijing", "family": "Essential", "s_plus_hkd": 153.5, "miles_per_change": 820, "fee_k_hkd": 28.0 },
+    { "route": "Beijing", "family": "Flex", "s_plus_hkd": 153.5, "miles_per_change": 820, "fee_k_hkd": 9.3 },
+    { "route": "Shanghai", "family": "Light", "s_plus_hkd": 122.9, "miles_per_change": 656, "fee_k_hkd": 39.0 },
+    { "route": "Shanghai", "family": "Essential", "s_plus_hkd": 122.9, "miles_per_change": 656, "fee_k_hkd": 27.3 },
+    { "route": "Shanghai", "family": "Flex", "s_plus_hkd": 122.9, "miles_per_change": 656, "fee_k_hkd": 8.6 }
+  ]
+}
